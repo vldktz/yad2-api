@@ -1,12 +1,29 @@
 'use strict'
 
 const {responseHandler,errorHandler,returnResponse} = require('../utils/response');
-const {userLoginValidator} = require('./../utils/input-validation');
+const {userLoginValidator,userUpdateValidator,createUpdateValidator} = require('./../utils/input-validation');
 const {ERRORS,TOKEN_TYPES,USER_LOGIN_TOKEN_SETTING} = require('../utils/consts');
-const {login} = require('./../services/user.service');
+const {login,updateAdminByID,createUser} = require('./../services/user.service');
 const {createToken} = require('../utils/jwt');
 const appDomain = require('../utils/config').app.domain;
 
+const createNewUser = async ({body} , res) => {
+    const newUser = body;
+    const valid = createUpdateValidator.validate(newUser);
+    if (valid.error)
+        return (errorHandler(ERRORS.badInputFormat,res))
+    try {
+        const user = await createUser(newUser);
+        const token = createToken(user,TOKEN_TYPES.userLogin);
+        res.cookie('access_token',token,USER_LOGIN_TOKEN_SETTING);
+        console.info({UserID : user.id, UserName : `${user.fullName}`},'user created and login success');
+        return responseHandler(returnResponse(0,user,'create success'),res)
+    }
+    catch (err)  {
+        console.info('failed to invite new admin', err.message);
+        return (errorHandler(err,res))
+    }
+}
 
 const userLogin = async ({body}, res) => {
     const loginParams = body;
@@ -35,7 +52,23 @@ const userLogout = async (req,res) => {
         console.info('failed to logout user', err.message);
         return (errorHandler(err,res))
     }
-
 }
 
-module.exports = {userLogin,userLogout}
+const updateUser = async ({body,params},res) => {
+    try {
+        const user = body;
+        const valid = userUpdateValidator.validate(user);
+        if (valid.error)
+            return (errorHandler(ERRORS.badInputFormat,res))
+        if (!user.id)
+            user.id =params.id;
+        await updateAdminByID(user);
+        return responseHandler(user,res);
+    }
+    catch (err) {
+        console.info('failed to update user', err.message);
+        return (errorHandler(err,res))
+    }
+}
+
+module.exports = {createNewUser,userLogin,userLogout,updateUser}

@@ -8,13 +8,25 @@ const login = async (email, password) =>{
     try {
         const user = await User.findOne({where : {email}});
         if (!user)
-            throw ERRORS.WrongEmailOrPasswordError;
+            throw ERRORS.wrongEmailOrPasswordError;
         await validPassword(password,user.password);
         return user;
     }
     catch (err) {
-        throw ERRORS.WrongEmailOrPasswordError;
+        throw ERRORS.wrongEmailOrPasswordError;
     }
 }
 
-module.exports = {login}
+const updateAdminByID = async (user) => {
+    return await User.update(user,{where : {id : user.id}})
+}
+
+const createUser = async (user) => {
+    try{
+        const user = await User.create(user);
+        return user;
+    } catch (err){
+        throw ERRORS.userDuplicatedEmailError;
+    }}
+
+module.exports = {login,updateAdminByID,createUser}
