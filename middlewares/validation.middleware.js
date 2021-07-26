@@ -5,7 +5,7 @@ const verifyToken = async (token) => {
     const expires = Date.parse(data.expires);
     const now =  Date.now();
     if (expires < now)
-        throw new Error('Invalid Time ');
+        throw new Error('Invalid Time');
     return data;
 }
 
