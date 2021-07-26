@@ -10,16 +10,22 @@ const userLoginValidator = Joi.object({
 const userUpdateValidator = Joi.object({
     id: Joi.number(),
     fullName: Joi.string().required(),
-    phoneNumber: Joi.string().required(),
     email: Joi.string().email().required(),
     password: Joi.string()
 })
 
-const createUpdateValidator = Joi.object({
+const userCreateValidator = Joi.object({
     fullName: Joi.string().required(),
-    phoneNumber: Joi.string().required(),
     email: Joi.string().email().required(),
     password: Joi.string().required()
 })
 
-module.exports = {userLoginValidator,userUpdateValidator,createUpdateValidator}
+const offerCreateValidator = Joi.object({
+    userID: Joi.number().required(),
+    title: Joi.string().required(),
+    description: Joi.string().required().length(200),
+    offerType: Joi.number().required(),
+    phoneNumber: Joi.string().required(),
+    email: Joi.string().email().required(),
+})
+module.exports = {userLoginValidator,userUpdateValidator,userCreateValidator,offerCreateValidator}

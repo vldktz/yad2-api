@@ -17,7 +17,7 @@ const login = async (email, password) =>{
     }
 }
 
-const updateAdminByID = async (user) => {
+const updateUserByID = async (user) => {
     return await User.update(user,{where : {id : user.id}})
 }
 
@@ -29,4 +29,4 @@ const createUser = async (user) => {
         throw ERRORS.userDuplicatedEmailError;
     }}
 
-module.exports = {login,updateAdminByID,createUser}
+module.exports = {login,updateUserByID,createUser}
