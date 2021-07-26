@@ -8,4 +8,4 @@ router.post('/',verifyTokenMiddleware,createNewOffer);
 
 router.get('/',verifyTokenMiddleware,getAllOffers);
 
-exports = router;
+module.exports = router;

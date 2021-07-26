@@ -1,7 +1,7 @@
 'use strict'
 
 const jwt = require('jsonwebtoken');
-const jwtSecret = require('/utils/config').app.jwt
+const jwtSecret = require('./config').app.jwt
 const {ERRORS} =require('./consts');
 const createToken = (object,extraConfig) => {
     return jwt.sign({...object, ...extraConfig, jwtSecret});

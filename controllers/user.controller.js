@@ -1,11 +1,11 @@
 'use strict'
 
-const {responseHandler,errorHandler,returnResponse} = require('../utils/response');
+const {responseHandler,errorHandler,returnResponse} = require('./../utils/response');
 const {userLoginValidator,userUpdateValidator,userCreateValidator} = require('./../utils/input-validation');
-const {ERRORS,TOKEN_TYPES,USER_LOGIN_TOKEN_SETTING} = require('../utils/consts');
+const {ERRORS,TOKEN_TYPES,USER_LOGIN_TOKEN_SETTING} = require('./../utils/consts');
 const {login,updateUserByID,createUser} = require('./../services/user.service');
-const {createToken} = require('../utils/jwt');
-const appDomain = require('../utils/config').app.domain;
+const {createToken} = require('./../utils/jwt');
+const appDomain = require('./../utils/config').app.domain;
 
 const createNewUser = async ({body} , res) => {
     const newUser = body;

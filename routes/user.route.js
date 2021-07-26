@@ -12,4 +12,4 @@ router.post('/logout',userLogout);
 
 router.put('/:id',verifyTokenMiddleware,verifySelfToken,updateUser);
 
-exports = router;
+module.exports = router;
