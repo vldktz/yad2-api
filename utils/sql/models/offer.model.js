@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             required: true
         },
-        offerType : {
+        offerTypeID : {
             type: DataTypes.INTEGER,
             allowNull: false,
             required: true

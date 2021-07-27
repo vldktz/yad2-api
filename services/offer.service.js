@@ -12,7 +12,7 @@ const createOffer = async (user) => {
 }
 
 
-const getOffers = async ({offerType}) => {
+const getOffers = async ({offerTypeID}) => {
     const searchQuery = {
         include: [
             {
@@ -21,9 +21,9 @@ const getOffers = async ({offerType}) => {
             },
         ]
     };
-    if (offerType)
+    if (offerTypeID)
         searchQuery.where = {
-            offerType: offerType
+            offerTypeID
         }
 
     return await Offer.findAll(searchQuery);

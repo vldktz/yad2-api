@@ -24,7 +24,7 @@ const offerCreateValidator = Joi.object({
     userID: Joi.number().required(),
     title: Joi.string().required(),
     description: Joi.string().required().length(200),
-    offerType: Joi.number().required(),
+    offerTypeID: Joi.number().required(),
     phoneNumber: Joi.string().required(),
     email: Joi.string().email().required(),
 })
