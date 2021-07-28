@@ -5,6 +5,12 @@ const {offerCreateValidator} = require('./../utils/input-validation');
 const {ERRORS} = require('../utils/consts');
 const {createOffer,getOffers} = require('./../services/offer.service');
 
+/**
+ * handler for creating a new offer
+ * @param body
+ * @param res
+ * @returns {Promise<*>}
+ */
 const createNewOffer = async ({body} , res) => {
     const newOffer = body;
     console.log(newOffer);
@@ -23,6 +29,12 @@ const createNewOffer = async ({body} , res) => {
     }
 }
 
+/**
+ * handler for fetching offers
+ * @param query
+ * @param res
+ * @returns {Promise<*>}
+ */
 const getAllOffers = async ({query}, res) => {
     try {
         const offers = await getOffers(query);

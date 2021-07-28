@@ -19,8 +19,6 @@ const ERRORS = {
     badAccessToken : returnResponse(3, {},'Invalid access token',HTTP_STATUS_CODES.FORBIDDEN),
     badInputFormat : returnResponse(4, {},'Bad input format',HTTP_STATUS_CODES.BADREQUEST),
     userDuplicatedEmailError : returnResponse(5, {},'Email already registered',HTTP_STATUS_CODES.BADREQUEST),
-
-
 }
 
 const USER_LOGIN_TOKEN_SETTING = {

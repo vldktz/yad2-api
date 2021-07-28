@@ -4,8 +4,13 @@ const {ERRORS} = require('./../utils/consts');
 const appDomain = require('../utils/config').app.domain;
 const {errorHandler} = require('../utils/response');
 
-
-
+/**
+ * middleware for access token validation
+ * @param req
+ * @param res
+ * @param next
+ * @returns {Promise<*>}
+ */
 const verifyTokenMiddleware = async (req,res,next) => {
     const token = req.cookies.access_token
     try {
@@ -26,6 +31,11 @@ const verifyTokenMiddleware = async (req,res,next) => {
     }
 }
 
+/**
+ * helper func to verify token's payload
+ * @param token
+ * @returns {Promise<*>}
+ */
 const verifyToken = async (token) => {
     const data = verify(token)
     const expires = Date.parse(data.expires);
@@ -35,6 +45,13 @@ const verifyToken = async (token) => {
     return data;
 }
 
+/**
+ * middleware for verifying that the user can update only himself
+ * @param req
+ * @param res
+ * @param next
+ * @returns {Promise<void>}
+ */
 const verifySelfToken = async (req,res,next) => {
     const token = req.cookies.access_token
     const data = verify(token);

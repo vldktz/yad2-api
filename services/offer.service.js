@@ -3,6 +3,11 @@
 const {Offer, OfferType, User} = require('./../utils/sql/sql')
 const {ERRORS} = require('../utils/consts')
 
+/**
+ * create a new offer in DB
+ * @param offer
+ * @returns {Promise<Offer>}
+ */
 const createOffer = async (offer) => {
     try {
         return await Offer.create(offer);
@@ -12,6 +17,11 @@ const createOffer = async (offer) => {
 }
 
 
+/**
+ * get offers from DB
+ * @param offerTypeID
+ * @returns {Promise<Offer[]>}
+ */
 const getOffers = async ({offerTypeID}) => {
     const searchQuery = {
         include: [

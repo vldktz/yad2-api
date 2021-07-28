@@ -7,6 +7,12 @@ const {login,updateUserByID,createUser} = require('./../services/user.service');
 const {createToken} = require('./../utils/jwt');
 const appDomain = require('./../utils/config').app.domain;
 
+/**
+ * handler for creating a new user
+ * @param body
+ * @param res
+ * @returns {Promise<*>}
+ */
 const createNewUser = async ({body} , res) => {
     const newUser = body;
     const valid = userCreateValidator.validate(newUser);
@@ -25,6 +31,12 @@ const createNewUser = async ({body} , res) => {
     }
 }
 
+/**
+ * handler for logging in a user
+ * @param body
+ * @param res
+ * @returns {Promise<*>}
+ */
 const userLogin = async ({body}, res) => {
     const loginParams = body;
     const valid = userLoginValidator.validate(loginParams);
@@ -43,6 +55,12 @@ const userLogin = async ({body}, res) => {
     }
 }
 
+/**
+ * handler for logging out a user
+ * @param req
+ * @param res
+ * @returns {Promise<*>}
+ */
 const userLogout = async (req,res) => {
     try {
         res.clearCookie("access_token", {domain: appDomain});
@@ -54,6 +72,13 @@ const userLogout = async (req,res) => {
     }
 }
 
+/**
+ * handler for updating a user
+ * @param body
+ * @param params
+ * @param res
+ * @returns {Promise<*>}
+ */
 const updateUser = async ({body,params},res) => {
     try {
         const user = body;
