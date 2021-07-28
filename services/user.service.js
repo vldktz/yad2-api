@@ -2,7 +2,8 @@
 
 const {User} = require('./../utils/sql/sql')
 const {ERRORS} = require('../utils/consts')
-const {validPassword} = require('./../utils/password-manager')
+const {validPassword,hashPassword} = require('./../utils/password-manager')
+
 
 const login = async (email, password) =>{
     try {
@@ -18,13 +19,15 @@ const login = async (email, password) =>{
 }
 
 const updateUserByID = async (user) => {
+    if(user.password?.length > 0)
+        user.password = await hashPassword(user.password);
     return await User.update(user,{where : {id : user.id}})
 }
 
 const createUser = async (user) => {
     try{
-        const user = await User.create(user);
-        return user;
+        user.password = await hashPassword(user.password);
+        return await User.create(user);
     } catch (err){
         throw ERRORS.userDuplicatedEmailError;
     }}

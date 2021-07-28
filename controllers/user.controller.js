@@ -32,7 +32,7 @@ const userLogin = async ({body}, res) => {
         return (errorHandler(ERRORS.userEmailOrPasswordError,res))
     try {
         let user = await login(loginParams.email,loginParams.password);
-        user = {id: user.id,fullName: user.fullName}
+        user = {id: user.id,fullName: user.fullName, email: user.email}
         const token = createToken(user,TOKEN_TYPES.userLogin);
         res.cookie('access_token',token,USER_LOGIN_TOKEN_SETTING);
         console.info({UserID : user.id, UserName : `${user.fullName}`},'user login success');

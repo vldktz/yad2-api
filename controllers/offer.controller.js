@@ -7,7 +7,9 @@ const {createOffer,getOffers} = require('./../services/offer.service');
 
 const createNewOffer = async ({body} , res) => {
     const newOffer = body;
+    console.log(newOffer);
     const valid = offerCreateValidator.validate(newOffer);
+    console.log(valid.error);
     if (valid.error)
         return (errorHandler(ERRORS.badInputFormat,res))
     try {

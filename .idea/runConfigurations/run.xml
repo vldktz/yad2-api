@@ -3,7 +3,7 @@
     <envs>
       <env name="PORT" value="3006" />
       <env name="APP_NAME" value="yad2-API" />
-      <env name="JWT_SECRET" value="top_secret_key" />
+      <env name="JWT_SECRET" value="kd9d754dkO" />
       <env name="DOMAIN" value="localhost" />
       <env name="API_DOMAIN" value="localhost:3006" />
       <env name="APP-DOMAIN" value="http://localhost:4200" />

@@ -3,9 +3,9 @@
 const {Offer, OfferType} = require('./../utils/sql/sql')
 const {ERRORS} = require('../utils/consts')
 
-const createOffer = async (user) => {
+const createOffer = async (offer) => {
     try {
-        return await Offer.create(user);
+        return await Offer.create(offer);
     } catch (err) {
         throw ERRORS.badInputFormat;
     }
