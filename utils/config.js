@@ -1,5 +1,9 @@
 'use strict'
 
+/**
+ *
+ * APP config - can bew read from env or can be the defaults values
+ */
 module.exports = {
     app : {
         port : process.env.PORT || 3006,

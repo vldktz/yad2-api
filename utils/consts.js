@@ -14,9 +14,11 @@ const HTTP_STATUS_CODES = {
 };
 
 const ERRORS = {
-    badAccessToken : returnResponse(5, {},'Invalid access_token',HTTP_STATUS_CODES.FORBIDDEN),
     userEmailOrPasswordError : returnResponse(1, {},'Bad email or password input format',HTTP_STATUS_CODES.BADREQUEST),
-    WrongEmailOrPasswordError : returnResponse(2, {},'Wrong email or password',HTTP_STATUS_CODES.BADREQUEST),
+    wrongEmailOrPasswordError : returnResponse(2, {},'Wrong email or password',HTTP_STATUS_CODES.BADREQUEST),
+    badAccessToken : returnResponse(3, {},'Invalid access token',HTTP_STATUS_CODES.FORBIDDEN),
+    badInputFormat : returnResponse(4, {},'Bad input format',HTTP_STATUS_CODES.BADREQUEST),
+    userDuplicatedEmailError : returnResponse(5, {},'Email already registered',HTTP_STATUS_CODES.BADREQUEST),
 }
 
 const USER_LOGIN_TOKEN_SETTING = {

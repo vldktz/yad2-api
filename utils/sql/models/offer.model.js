@@ -12,16 +12,16 @@ module.exports = (sequelize, DataTypes) => {
             required: true
         },
         title: {
-            type: DataTypes.CHAR(200),
-            allowNull: false,
-            required: true
-        },
-        description : {
             type: DataTypes.STRING,
             allowNull: false,
             required: true
         },
-        offerType : {
+        description : {
+            type: DataTypes.STRING(200),
+            allowNull: false,
+            required: true
+        },
+        offerTypeID : {
             type: DataTypes.INTEGER,
             allowNull: false,
             required: true
@@ -36,10 +36,5 @@ module.exports = (sequelize, DataTypes) => {
             require: true,
             allowNull: false
         },
-        indexes: [
-            {
-                unique: true,
-                fields: ['userID']
-            }]
     })
 };

@@ -1,0 +1,21 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="run" type="NodeJSConfigurationType" path-to-js-file="app.js" working-dir="$PROJECT_DIR$">
+    <envs>
+      <env name="PORT" value="3006" />
+      <env name="APP_NAME" value="yad2-API" />
+      <env name="JWT_SECRET" value="kd9d754dkO" />
+      <env name="DOMAIN" value="localhost" />
+      <env name="API_DOMAIN" value="localhost:3006" />
+      <env name="APP-DOMAIN" value="http://localhost:4200" />
+      <env name="WHITE_LIST" value="http://localhost:4200" />
+      <env name="DB_USERNAME" value="root" />
+      <env name="DB_HOST" value="localhost" />
+      <env name="DB_PASSWORD" value="" />
+      <env name="DB_NAME" value="yad2" />
+    </envs>
+    <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSStartBrowserRunConfigurationExtension">
+      <browser url="http://localhost:3000/" />
+    </EXTENSION>
+    <method v="2" />
+  </configuration>
+</component>

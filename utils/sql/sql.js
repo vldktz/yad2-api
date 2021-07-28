@@ -50,7 +50,7 @@ const OfferType = require("./models/offer-type.model")(sequelize, Sequelize);
 User.hasMany(Offer,{as: 'userOffers',foreignKey: 'userID'});
 Offer.belongsTo(User,{foreignKey: 'userID'});
 
-OfferType.hasMany(Offer,{as: 'offerTypeOffers',foreignKey: 'offerType'})
-Offer.belongsTo(OfferType, {foreignKey: 'offerType'});
+OfferType.hasMany(Offer,{as: 'offerTypeOffers',foreignKey: 'offerTypeID'})
+Offer.belongsTo(OfferType, {foreignKey: 'offerTypeID'});
 
 module.exports = {connect,User,Offer,OfferType};

@@ -2,6 +2,11 @@
 
 const bcrypt = require('bcryptjs');
 
+/**
+ * create a hashed password
+ * @param password
+ * @returns {Promise<unknown>}
+ */
 const hashPassword = async (password) => {
     const saltRounds = 10;
     return await new Promise((resolve, reject) => {
@@ -12,6 +17,12 @@ const hashPassword = async (password) => {
     })
 }
 
+/**
+ * validate and match a password
+ * @param password
+ * @param hashPassword
+ * @returns {Promise<boolean>}
+ */
 const validPassword = async (password,hashPassword) => {
     await new Promise((resolve, reject) => {
         bcrypt.compare(password, hashPassword, function(err, result) {

@@ -2,7 +2,6 @@
  * @typedef User
  * @property {[string]} fullName
  * @property {[string]} email
- * @property {[string]} phoneNumber
  */
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('User', {
@@ -11,11 +10,6 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             require : true
 
-        },
-        phoneNumber: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            require : true
         },
         email: {
             type: DataTypes.STRING,
