@@ -1,6 +1,6 @@
 'use strict'
 
-const {Offer, OfferType} = require('./../utils/sql/sql')
+const {Offer, OfferType, User} = require('./../utils/sql/sql')
 const {ERRORS} = require('../utils/consts')
 
 const createOffer = async (offer) => {
@@ -19,6 +19,10 @@ const getOffers = async ({offerTypeID}) => {
                 model: OfferType,
                 as: 'OfferType',
             },
+            {
+                model: User,
+                as: 'User'
+            }
         ]
     };
     if (offerTypeID)
